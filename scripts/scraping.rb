@@ -2,25 +2,34 @@
 
 require 'open-uri'
 require 'nokogiri'
+# @TODO require_relativeでやる
+require './utils/util'
 # @see https://docs.ruby-lang.org/ja/latest/library/optparse.html
-require 'optparse'
 
 module Coveruby
   # scraping
   class Scraping
-    # 定義されていないoptionがでるとerrorがthrowされる（これをtryでwrapしてutilsに置きたい）
-    def option_parse
-      opt = OptionParser.new
-
-      opt.on('-a') { |v| p v }
-      opt.on('-b') { |v| p v }
-
-      puts "$0: #{$0}"
-      opt.parse!(ARGV)
-
-      ARGV.each_with_index do |arg, i|
-        puts "ARGV[#{i}]: #{arg}"
+    include Utils
+    # @TODO 次はtry catch
+    def parser
+      begin
+        Util.option_parse
+      rescue => e
+        puts e
+      ensure
+        puth 'Down'
       end
+      # opt = OptionParser.new
+
+      # opt.on('-a') { |v| p v }
+      # opt.on('-b') { |v| p v }
+
+      # puts "$0: #{$0}"
+      # opt.parse!(ARGV)
+
+      # ARGV.each_with_index do |arg, i|
+      #   puts "ARGV[#{i}]: #{arg}"
+      # end
     end
 
     def execute
@@ -38,4 +47,4 @@ module Coveruby
 end
 
 # entrypoint
-Coveruby::Scraping.new.option_parse
+Coveruby::Scraping.new.parser

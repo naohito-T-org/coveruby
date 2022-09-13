@@ -38,3 +38,8 @@ findだと,で検索タグを複数増やせる
 | -o --output [path]           |          | File Output Destination              | <!-- 末尾が拡張子があればファイル名にしないといけない -->
 | -t, --tag [html tag name]    |          | Refine Tags                          |
 | -u, --url [url]              | ◯        | URL for scraping                     |
+
+    
+## tmp
+
+[スクレイピング参照](https://qiita.com/Gatsby/items/1df65eb80fa536d452c4)

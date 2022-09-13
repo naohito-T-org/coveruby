@@ -1,3 +1,7 @@
+.PHONE: run
+run:
+	bundle exec ruby scripts/scraping.rb
+
 # rubocop check
 .PHONE: format
 format:
